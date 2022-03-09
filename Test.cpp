@@ -1,7 +1,7 @@
 /**
  * AUTHORS: Idan Kaminetsky
  * 
- * Date: 2022-03
+ * Date: 2022-03-09
  */
 
 #include "doctest.h"
@@ -27,7 +27,8 @@ string nospaces(string input) {
 
 TEST_CASE("Good input") {
 
-    //correct input with different simbols
+    //correct input with different simbols:
+
 	CHECK(nospaces(mat(9, 7, '@', '-')) == nospaces("@@@@@@@@@\n"
 													"@-------@\n"
 													"@-@@@@@-@\n"
@@ -35,7 +36,6 @@ TEST_CASE("Good input") {
 													"@-@@@@@-@\n"
 													"@-------@\n"
 													"@@@@@@@@@"));
-	/* Add more test here */
 
     CHECK(nospaces(mat(13, 5, '@', '-')) == nospaces("@@@@@@@@@@@@@\n"
 													 "@-----------@\n"
@@ -48,9 +48,9 @@ TEST_CASE("Good input") {
 													"$+$\n"
 													"$+$\n"
 													"$$$\n"));
-    
 
     CHECK(nospaces(mat(1 , 1, '$', '+')) == nospaces("$"));
+    CHECK(nospaces(mat(1 , 1, '+', '$')) == nospaces("+"));
 
     CHECK(nospaces(mat(1, 5, '@', '#')) == nospaces("@\n"
 													"@\n"
@@ -99,6 +99,7 @@ TEST_CASE("Bad input") {
 
 TEST_CASE("another checks for good input") {
     
+    // check length of output
     CHECK(nospaces(mat(1 , 1, '$', '+')).length() == 1*1);
     CHECK(nospaces(mat(3 , 7, '$', '+')).length() == 3*7);
     CHECK(nospaces(mat(7 , 3, '$', '+')).length() == 7*3);
