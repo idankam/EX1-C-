@@ -25,10 +25,11 @@ string nospaces(string input) {
 }
 
 
+
+
 TEST_CASE("Good input") {
 
     //correct input with different simbols:
-
 	CHECK(nospaces(mat(9, 7, '@', '-')) == nospaces("@@@@@@@@@\n"
 													"@-------@\n"
 													"@-@@@@@-@\n"
@@ -76,8 +77,10 @@ TEST_CASE("Bad input") {
 
     // even numbers:
     CHECK_THROWS(mat(10, 5, '$', '%'));
+    CHECK_THROWS(mat(5, 10, '$', '%'));
     CHECK_THROWS(mat(2, 2, '$', '%'));
     CHECK_THROWS(mat(1, 2, '$', '%'));
+    CHECK_THROWS(mat(2, 1, '$', '%'));
 
     // zeros:
     CHECK_THROWS(mat(0, 0, '$', '%'));
