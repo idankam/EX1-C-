@@ -98,6 +98,12 @@ TEST_CASE("Bad input") {
     CHECK_THROWS(mat(0, -1000, '\t', '%'));
     CHECK_THROWS(mat(0, -1000, '\r', '%'));
     CHECK_THROWS(mat(0, -1000, ' ', '%'));
+
+    // not in valid range (33-126 in ASCII table):
+    CHECK_THROWS(mat(0, -1000, 127, '%'));
+    CHECK_THROWS(mat(0, -1000, 32, '%'));
+    CHECK_THROWS(mat(0, -1000, '%', 127));
+    CHECK_THROWS(mat(0, -1000, '%', 32));
 }
 
 TEST_CASE("another checks for good input") {
